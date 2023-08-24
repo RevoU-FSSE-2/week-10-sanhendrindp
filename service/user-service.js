@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { JWT_SIGN } = require("../config/jwt.js");
 
 // Register user account for new user
 const register = async (req, res) => {
@@ -40,7 +41,7 @@ const login = async (req, res) => {
   const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
   if (isPasswordCorrect) {
-    const token = jwt.sign({ id: user._id, username: user.username }, "sign");
+    const token = jwt.sign({ id: user._id, username: user.username }, JWT_SIGN);
     res.status(200).json({
       Message: "User successfully logged in ✅",
       Data: token,
