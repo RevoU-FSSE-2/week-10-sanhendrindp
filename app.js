@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const databaseMiddleware = require("./middleware/database-middleware.js");
 const userRouter = require("./routes/user-route.js");
+const transferRouter = require("./routes/transfer-route.js");
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(databaseMiddleware);
 
 // Routes
 app.use("/users", userRouter);
-app.use("/transfers", () => {});
+app.use("/transfers", transferRouter);
 
 // ================================ LISTEN =================================
 app.get("/", (req, res) => {
