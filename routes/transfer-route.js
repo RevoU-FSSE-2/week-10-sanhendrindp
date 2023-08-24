@@ -2,7 +2,7 @@ const { Router } = require("express");
 const {
   getAllTransfers,
   createTransfers,
-} = require("../service/transfer-service.js");
+} = require("../controller/transfer-controller.js");
 
 const transferRouter = Router();
 
