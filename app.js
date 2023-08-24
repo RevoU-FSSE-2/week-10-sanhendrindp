@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const databaseMiddleware = require("./middleware/database-middleware.js");
+const authRouter = require("./routes/auth-route.js");
 
 const app = express();
 
@@ -8,7 +9,7 @@ app.use(express.json());
 app.use(databaseMiddleware);
 
 // Routes
-app.use("/users", () => {});
+app.use("/auth", authRouter);
 app.use("/transfers", () => {});
 
 // ================================ LISTEN =================================
