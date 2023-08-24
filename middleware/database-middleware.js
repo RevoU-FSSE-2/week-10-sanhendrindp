@@ -4,7 +4,7 @@ let db;
 const databaseMiddleware = async (req, res, next) => {
   // Connect to mongodb
   const mongoClient = await new MongoClient(
-    "mongod://localhost:27017"
+    "mongodb://127.0.0.1:27017"
   ).connect();
   db = mongoClient.db("revou-week-10");
 
