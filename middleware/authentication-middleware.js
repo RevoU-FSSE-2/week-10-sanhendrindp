@@ -16,7 +16,7 @@ const authenticationMiddleware = (req, res, next) => {
 
     try {
       const decodeToken = jwt.verify(token, JWT_SIGN);
-      console.log(decodeToken);
+      console.log(decodeToken, `This is decodeToken`);
 
       next();
     } catch (error) {
