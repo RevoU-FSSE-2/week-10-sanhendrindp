@@ -5,9 +5,17 @@ const databaseMiddleware = require("./middleware/database-middleware.js");
 const userRouter = require("./routes/user-route.js");
 const transferRouter = require("./routes/transfer-route.js");
 const authenticationMiddleware = require("./middleware/authentication-middleware.js");
+const swaggerUi = require("swagger-ui-express");
+const yaml = require("yaml");
+const fs = require("fs");
+
+const openApiPath = "./docs/openapi.yaml";
+const file = fs.readFileSync(openApiPath, "utf-8");
+const swaggerDocument = yaml.parse(file);
 
 const app = express();
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.json());
 app.use(databaseMiddleware);
 

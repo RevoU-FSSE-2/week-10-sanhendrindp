@@ -14,8 +14,8 @@ const authorizationMiddleware = (req, res, next) => {
     try {
       const decodeToken = jwt.verify(token, JWT_SIGN);
 
-      //  If role is approver next, else unauthorize
-      if (decodeToken.role === "approver") {
+      //  If role is approver/maker next, else unauthorize
+      if (decodeToken.role === "approver" || decodeToken.role === "maker") {
         next();
       } else {
         res.status(401).json({

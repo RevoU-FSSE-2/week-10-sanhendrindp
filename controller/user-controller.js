@@ -42,7 +42,7 @@ const login = async (req, res) => {
     // Check if a user with the given username exists
     if (!user) {
       return res.status(400).json({
-        Message: "User not found!",
+        Message: "Username is incorrect!",
       });
     }
 
