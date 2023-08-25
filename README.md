@@ -8,6 +8,10 @@
 <a href="https://week-10-sanhendrindp-production.up.railway.app/">week-10-sanhendrindp-production.up.railway.app/</a>
 </p>
 
+# Project Description
+
+In this week 10 project, we built a RESTful API server using the MongoDB database. This app, later on, can do basic registration for new users and login. Users must have an account by registering and then login. And users will have a role, which is maker and approver. Maker can create a transfer request, but that request will be in pending status first. Then approver can change that status transfer to approved or not approved.
+
 ---
 
 <p align="center">Thank you 🙏</p>

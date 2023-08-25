@@ -6,8 +6,8 @@ info:
 servers:
   - url: http://localhost:3000
     description: For development server
-  # - url: http://localhost:3001
-  #   description: For public server
+  - url: https://week-10-sanhendrindp-production.up.railway.app/
+    description: For public server
 components:
   securitySchemes:
     bearer:
