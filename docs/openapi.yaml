@@ -204,7 +204,8 @@ paths:
                   type: string
                   enum:
                     - approved
-                  description: The status to set for the transfer (only "approved" is allowed)
+                    - not approved
+                  description: The status is only "approved" or "not approved"
       responses:
         "200":
           description: Transfer successfully approved

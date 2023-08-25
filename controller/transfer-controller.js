@@ -45,15 +45,19 @@ const approveTransfer = async (req, res) => {
   }
 
   // Retrieve the transfer ID and update the status to 'approved'
-  const { transferId } = req.body;
+  const { transferId, status } = req.body;
+
+  // Check if the status is valid ("approved" or "not approved")
+  if (status !== "approved" && status !== "not approved") {
+    return res.status(400).json({
+      Message: "Invalid status. Status must be 'approved' or 'not approved'",
+    });
+  }
 
   try {
     const result = await req.db
       .collection("transfers")
-      .updateOne(
-        { _id: new ObjectId(transferId) },
-        { $set: { status: "approved" } }
-      );
+      .updateOne({ _id: new ObjectId(transferId) }, { $set: { status } });
 
     if (result.modifiedCount === 0) {
       return res.status(404).json({
@@ -61,9 +65,15 @@ const approveTransfer = async (req, res) => {
       });
     }
 
-    res.status(200).json({
-      Message: "Transfer request approved ✅",
-    });
+    if (status === "approved") {
+      res.status(200).json({
+        Message: "Transfer request approved ✅",
+      });
+    } else {
+      res.status(200).json({
+        Message: "Transfer request not approved",
+      });
+    }
   } catch (error) {
     res.status(500).json({
       Message: error.message,
