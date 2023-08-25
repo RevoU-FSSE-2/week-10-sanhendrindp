@@ -16,6 +16,7 @@ const authorizationMiddleware = (req, res, next) => {
 
       //  If role is approver/maker next, else unauthorize
       if (decodeToken.role === "approver" || decodeToken.role === "maker") {
+        req.user = decodeToken;
         next();
       } else {
         res.status(401).json({

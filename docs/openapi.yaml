@@ -47,6 +47,22 @@ components:
       properties:
         message:
           type: string
+    Transfer:
+      type: object
+      properties:
+        amount:
+          type: integer
+        information:
+          type: string
+        status:
+          type: string
+          enum:
+            - "pending"
+            - "approved"
+      required:
+        - "amount"
+        - "information"
+        - "status"
 paths:
   /users/register:
     post:
@@ -134,3 +150,74 @@ paths:
                           type: integer
                         information:
                           type: string
+    post:
+      security:
+        - bearer: []
+      summary: Create a transfer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transfer"
+      responses:
+        "201":
+          description: Transfer successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      amount:
+                        type: integer
+                      information:
+                        type: string
+                      status:
+                        type: string
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+  /transfers/approve:
+    post:
+      summary: Approve a transfer
+      requestBody:
+        description: Request body for transfer approval
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transferId:
+                  type: string
+                  description: The ID of the transfer to approve
+                status:
+                  type: string
+                  enum:
+                    - approved
+                  description: The status to set for the transfer (only "approved" is allowed)
+      responses:
+        "200":
+          description: Transfer successfully approved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
