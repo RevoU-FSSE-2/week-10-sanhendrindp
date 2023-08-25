@@ -21,10 +21,20 @@ components:
       properties:
         username:
           type: string
+          minLength: 5
         password:
           type: string
+          minLength: 8
+          pattern: "^(?=.*[a-zA-Z])(?=.*[0-9]).*$"
         role:
           type: string
+          enum:
+            - "maker"
+            - "approver"
+      required:
+        - "username"
+        - "password"
+        - "role"
     LoginUser:
       type: object
       properties:
