@@ -187,7 +187,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/BadRequest"
   /transfers/approve:
-    post:
+    put:
+      security:
+        - bearer: []
       summary: Approve a transfer
       requestBody:
         description: Request body for transfer approval

@@ -11,7 +11,7 @@ const transferRouter = Router();
 transferRouter.get("/", getAllTransfers);
 // transferRouter.post("/", authorizationMiddleware, createTransfers);
 transferRouter.post("/", createTransfers);
-transferRouter.post("/approve", authorizationMiddleware, approveTransfer);
+transferRouter.put("/approve", authorizationMiddleware, approveTransfer);
 
 // Export transferRouter
 module.exports = transferRouter;

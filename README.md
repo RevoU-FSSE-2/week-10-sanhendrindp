@@ -33,6 +33,8 @@ Here, i will try to explain the structure of important folders for this project 
 4. Config: Contain jwt.js to configure JWT token signature.
 5. Docs: Contain openapi.yaml for API documentation which can be run by using Swagger.
 
+# Testing on Postman
+
 ---
 
 <p align="center">Thank you 🙏</p>
