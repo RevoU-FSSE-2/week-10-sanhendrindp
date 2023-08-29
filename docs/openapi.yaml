@@ -64,6 +64,16 @@ components:
         - "information"
         - "status"
 paths:
+  /:
+    get:
+      summary: Root endpoint
+      responses:
+        "200":
+          description: "Welcome message"
+          content:
+            text/plain:
+              schema:
+                type: string
   /users/register:
     post:
       summary: Register for new user
