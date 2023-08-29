@@ -57,6 +57,7 @@ Here, i will try to explain the structure of important folders for this project 
    By login, users will generate a token, that token can be used for creating a new transfer request. To create a transfer request user needs to input the amount of transfer and information about the transfer.
 
 4. **GET : /transfers**
+
    With token, users also can see all transfers lists.
 
    <p align="center">
@@ -64,6 +65,7 @@ Here, i will try to explain the structure of important folders for this project 
    </p>
 
 5. **PUT : /transfer/approve**
+
    When login as approver role, user approver need to input ID transfer and then can update the transfer status created by the user maker to approved or not approved status. But remember, to update the status, user approver needs to input the token that is generated when they login.
 
    <p align="center">
