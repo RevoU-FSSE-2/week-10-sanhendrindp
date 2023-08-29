@@ -33,7 +33,51 @@ Here, i will try to explain the structure of important folders for this project 
 4. Config: Contain jwt.js to configure JWT token signature.
 5. Docs: Contain openapi.yaml for API documentation which can be run by using Swagger.
 
-# Testing on Postman
+# Testing All Endpoints Using Postman
+
+1. **POST : /users/register**
+   <p align="center">
+   <img src="images/Register.PNG" width="700"> 
+   </p>
+
+   For register, users need to input their username and password which is for password needs a minimum length of 8, and should contain alphanumeric. Users need to input their role which is maker or approver.
+
+2. **POST : /users/login**
+   <p align="center">
+   <img src="images/Login.PNG" width="700"> 
+   </p>
+
+   When users login, they will generate a token that will be used to get all transfer lists and create a transfer request.
+
+3. **POST : /transfers**
+   <p align="center">
+   <img src="images/Create a transfer.PNG" width="700"> 
+   </p>
+
+   By login, users will generate a token, that token can be used for creating a new transfer request. To create a transfer request user needs to input the amount of transfer and information about the transfer.
+
+4. **GET : /transfers**
+   With token, users also can see all transfers lists.
+
+   <p align="center">
+   <img src="images/Get all transfer.PNG" width="700"> 
+   </p>
+
+5. **PUT : /transfer/approve**
+   When login as approver role, user approver need to input ID transfer and then can update the transfer status created by the user maker to approved or not approved status. But remember, to update the status, user approver needs to input the token that is generated when they login.
+
+   <p align="center">
+   <img src="images/Approve a transfer.PNG" width="700"> 
+   <br>
+   <em>Approve Status by Approver Role</em>
+   </p>
+   <br>
+   <br>
+   <p align="center">
+   <img src="images/Final status.PNG" width="700"> 
+   <br>
+   <em>Transfer Status After Approval</em>
+   </p>
 
 ---
 
